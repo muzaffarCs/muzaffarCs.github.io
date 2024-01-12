@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.bgColor{
+transition: all 1.2s;
+background-color: white !important;
+color: black !important;
+}
+.headerss{
+    transition: all 1.2s;
+background-color: #4c4a4a;
+width: 100%;
+position: fixed;
+color: white;
+}
+.headerss nav ul{
+    display: flex;
+    padding: 10px;
+}
+.headerss nav ul li{
+    list-style: none;
+    padding: 0 20px;
+}
+    </style>
+</head>
+<body style="background-color: red; height: 200vh;">
+    <div class="headerss" id="header">
+        <nav>
+            <ul>
+                <li> <a href="">Home</a> </li>
+                <li><a href="">About</a></li>
+                <li>gallery</li>
+            </ul>
+        </nav>
+    </div>
+    
+    <script>
+    function changeBg(){
+    var navbar = document.getElementById("header");
+    var scrollValue = window.scrollY;
+    console.log(scrollValue);
+    if(scrollValue < 450 ){
+        navbar.classList.remove('bgColor');
+    }
+    else
+    {
+        navbar.classList.add('bgColor');
+    }
+}
+window.addEventListener('scroll', changeBg);
+    </script>
+</body>
+</html>

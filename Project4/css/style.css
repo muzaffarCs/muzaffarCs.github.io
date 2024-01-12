@@ -1,0 +1,241 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+button{
+    cursor: pointer;
+}
+.banner{
+    height: 90vh;
+    width: 100%;
+   
+}
+@media (min-width: 990px){
+    .header-ul{
+        padding-left: 12vw;
+    }
+    .header-ul li{
+        padding: 0 17px;
+    }
+    
+    .navbar-brand {
+        padding-left: 80px;
+    }
+    .whts-icon{
+        height: 9vh;
+        width: 9vh;
+        border-radius: 37px;
+        background-color: #1cb31c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: fixed;
+        top: 80vh;
+        left: 92vw;
+        box-shadow: 3px 3px #ffffff8c;
+        cursor: pointer;
+    }
+    .card-index {
+        border: 3px dashed rgba(55, 55, 225, 0.926);
+        margin: 0 15px;
+        width: 17vw;
+        height: 65vh;
+        text-align: center;
+    }
+    .cont2-col img{
+        height: auto;
+        width: 40vw;
+        /* z-index: -1; */
+        cursor: pointer;
+        transform: scale(1);
+        transition: 0.3s ease-in-out;
+    }
+    .cont2-col img:hover{
+        transform: scale(1.1);
+    }
+    /* .cont2-row{
+        margin-right: -140px;
+    } */
+    .cont2-row{
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        justify-content: center;
+    }
+    .img img{
+        max-width: 100%;
+        max-height: auto;
+        cursor: pointer;
+    }
+    .img{
+        margin: 0 13px;
+    }
+    .footer{
+        height: 70vh;
+        background-color: black;
+    }
+    .btn-indx{
+        width:10vw;
+    }
+}
+@media(max-width: 990px){
+    .navbar{
+        background-color: black;
+        color: white;
+    }
+    .navbar-toggler-icon{
+        color: white;
+    }
+    .whts-icon{
+        height: 9vh;
+        width: 9vh;
+        border-radius: 37px;
+        background-color: #1cb31c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: fixed;
+        top: 80vh;
+        left: 77vw;
+        box-shadow: 3px 3px #ffffff8c;
+        cursor: pointer;
+        z-index: 3;
+    }
+    
+    .card-index{
+        border: 3px dashed rgba(55, 55, 225, 0.926);
+        /* z-index: -1; */
+    } 
+    .img {
+        margin: 10px 20px;
+    }   
+    .img img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .bor{
+        border: 1px solid rgba(111, 110, 110, 0.832);
+    }
+    .footer{
+        height: auto;
+        background-color: black;
+    }
+}
+
+/* tablet style */
+@media (max-width: 580px){
+    .img img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .img{
+        margin: 10px 0;
+    }
+
+
+    /* the end of tablet style */
+}
+.main-nav{
+    position: fixed;
+    width: 100%;
+}
+/* .logo{
+    height: 14vh;
+} */
+
+.header-ul li a{
+    font-size: 20px;
+    color: white;
+}
+.header-ul li a:hover{
+    color: aqua;
+}
+.banner-content{
+    height: 115vh;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+.banner-content h1{
+    color: white;
+    font-weight: bolder;
+    font-size: 8vmin;
+}
+.banner-content h5{
+    color: white;
+    font-size: 3vmin;
+}
+.whts-icon i{
+    color: white;
+    font-size: 37px
+}
+
+/* the end of banner section */
+
+.cont{
+    height: auto;
+}
+.cont-h{
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.card-text-indx{
+    font-size: 20px;
+    color: rgb(101, 97, 97);
+}
+.card-h {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+#side-id img{
+    cursor: pointer;
+}
+    /* this is footer section */
+
+.footer ul li{
+    list-style: none;
+}
+.footer a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+.footer p{
+    font-size: 18px;
+}
+.social-iconss-all ul{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.sec-heading.center {
+    line-height: 46px;
+}
+.gallery-images img{
+    cursor: pointer;
+    transform: scale(1);
+    transition: 0.2s ease-in-out;
+}
+.gallery-images img:hover{
+    transform: scale(1.3);
+}
+

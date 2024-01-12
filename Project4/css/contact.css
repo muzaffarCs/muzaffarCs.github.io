@@ -1,0 +1,38 @@
+.banner-content-event {
+    height: 100vh;
+    width: 100%;
+    padding: 0 20vh 20vh;
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    text-align: center;
+    flex-direction: column;
+}
+.link-banner-event a{
+    font-size: 3vmin;
+    color: gray;
+    text-decoration: none;
+}
+.link-banner-event span{
+    font-size: 3vmin;
+    color: gray;
+}
+.link-banner-event a:hover{
+    color: aqua;
+    text-decoration: none;
+}
+.banner-content-event h5{
+    color: gray;
+    font-size: 9vmin;
+}
+.addr{
+    font-size: 25px;
+    color: #1089ff;
+}
+.card-p-c{
+    font-size: 22px;
+    color: gray;
+}
+.form-bg{
+    background-color: #f8f9fa;
+}

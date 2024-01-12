@@ -1,0 +1,40 @@
+.img-apartments-style img{
+	height: 400px !important;
+}
+
+a.btn-legacy {
+    background-color: var(--alipes-base);
+    padding: 10px 20px;
+    color: white !important;
+    font-weight: bold;
+
+}
+a.btn-legacy:hover{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    outline: none !important;
+    background-color: var(--alipes-black);
+    color: var(--alipes-white);
+
+    letter-spacing: var(--alipes-letter-spacing);
+    font-family: var(--alipes-font-two);
+    text-transform: uppercase;
+   
+    transition: all 0.5s linear;
+  
+}
+
+.btn-booking {
+    display: flex !important;
+    justify-content: center !important;
+    
+}
+div#search-form {
+    position: relative !important;
+    z-index: 2232 !important;
+    top: -20vh !important;
+    height: 66vh !important;
+    background: red !important;
+}

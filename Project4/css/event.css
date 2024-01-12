@@ -1,0 +1,30 @@
+.event-img img{
+    width: 100%;
+    height: 70vh;
+    border-radius: 20px;
+}
+.event-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+.eve-main-h{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.eve-main-h h5{
+    font-size: 2.1rem;
+}
+.event-heading{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.eve-p{
+    color: rgb(103, 101, 101);
+    font-size: 18px;
+}
+

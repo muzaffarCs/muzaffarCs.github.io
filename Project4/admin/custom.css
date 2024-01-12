@@ -1,0 +1,66 @@
+@media (max-width: 990px){
+
+}
+.main-card-db {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 4px -1px grey;
+    border-radius: 0px 5px 5px 0px;
+}
+.fa i{
+    color: white;
+    font-size: 50px;
+}
+#dash-card{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #00c0ef !important;
+}
+#dash-card2{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #00a65a !important;
+}
+.text-part {
+    padding-left: 32px;
+}
+.main-text {
+    font-size: 20px;
+}
+#db-inner-h {
+    font-size: 34px;
+    font-weight: bolder;
+}
+.nav-tabs-custom>.nav-tabs {
+    margin: 0;
+    border-bottom-color: #1b0101;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.edit-p-t{
+    font-size: 16px;
+    font-weight: bold;
+}
+img#s-p-img {
+    height: 13vh;
+    border-radius: 78px;
+    width: 13vh;
+}
+.seo-info{
+    background-color: #e4e4e4!important;
+}
+.seo-info h5{
+    font-size: 20px;
+    color: red;
+}
+#update-info img{
+    height: 14vh;
+
+}
