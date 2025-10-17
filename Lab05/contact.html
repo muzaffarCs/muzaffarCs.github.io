@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me - Muzaffar Ali</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="box">
+        <h1>Contact Muzaffar Ali</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html"> Home</a></li>
+                <li><a href="contact.html" class="active"> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="box">
+            <header>
+                <h2>Get in Touch</h2>
+            </header>
+            <section>
+                <p>
+                    Have a project, idea, or collaboration in mind? Fill out the form
+                    below with your details and message — I’ll get back to you as soon
+                    as possible!
+                </p>
+
+                <form action="#" method="post" class="contact-form">
+                    <fieldset>
+                        <legend>Personal Information</legend>
+
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name"
+                            required /><br /><br />
+
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email"
+                            required /><br /><br />
+
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="03XX-XXXXXXX" pattern="[0-9]{4}-[0-9]{7}"
+                            title="Format: 03XX-XXXXXXX" /><br /><br />
+
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject"
+                            placeholder="Subject of your message" /><br /><br />
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Message Details</legend>
+
+                        <label for="inquiry">Type of Inquiry:</label>
+                        <select id="inquiry" name="inquiry" required>
+                        <option value="" disabled selected>---Select---</option>
+                        <option value="project">Project Collaboration</option>
+                        <option value="feedback">Feedback / Suggestion</option>
+                        <option value="other">Other</option>
+                        </select><br /><br />
+
+                        <label for="message">Your Message:</label><br />
+                        <textarea id="message" name="message" rows="5" cols="40"
+                            placeholder="Write your message here..." required></textarea><br /><br />
+
+                        <label>
+                            <input type="checkbox" name="subscribe" /> Subscribe to my Blogs </label><br /><br />
+
+                        <input type="submit" value="Send Message" />
+                        <input type="reset" value="Clear Form" />
+                    </fieldset>
+                </form>
+            </section>
+        </article>
+    </main>
+
+    <footer id="contact" class="box">
+        <p>Back to <a href="index.html"> <span class="bhome"> Home Page </span></a></p>
+        <p>© 2025 Muzaffar Ali | Quaid-i-Azam University, Islamabad</p>
+    </footer>
+</body>
+
+</html>
