@@ -3,6 +3,10 @@
   gap: 20px;
 }
 
+/* =========================
+   REST API Statistics
+   ========================= */
+
 .github-stats__stat-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -28,12 +32,16 @@
   color: var(--text-muted);
 }
 
+/* =========================
+   Languages
+   ========================= */
+
 .github-stats__lang-bar {
   display: flex;
   height: 10px;
   border-radius: 999px;
   overflow: hidden;
-  margin-bottom: 14px;
+  margin: 14px 0;
   background: var(--bg-elevated-2);
 }
 
@@ -63,35 +71,72 @@
   flex-shrink: 0;
 }
 
-.github-stats__activity-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* =========================
+   Contribution Graph
+   ========================= */
+
+.github-stats__img-wrap {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-elevated);
 }
 
-.github-stats__activity-item {
+.github-stats__contribution-header {
   display: flex;
-  gap: 10px;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
 }
-.github-stats__activity-item:last-child { border-bottom: none; padding-bottom: 0; }
 
-.github-stats__activity-time {
+.github-stats__profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
   font-family: var(--font-display);
-  font-size: 0.74rem;
-  color: var(--text-muted);
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  text-decoration: none;
+
   white-space: nowrap;
-  flex-shrink: 0;
 }
+
+.github-stats__profile-link:hover {
+  text-decoration: underline;
+}
+
+/*
+ * This keeps the same behavior as the old
+ * working GitHub image implementation.
+ */
+.github-calendar-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.github-calendar-image {
+  width: 100%;
+  min-width: 700px;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   Note
+   ========================= */
 
 .github-stats__note {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-top: 14px;
 }
+
+/* =========================
+   Loading / Error
+   ========================= */
 
 .github-stats__state {
   text-align: center;
@@ -103,17 +148,56 @@
 .github-stats__skeleton {
   height: 14px;
   border-radius: 6px;
-  background: linear-gradient(90deg, var(--bg-elevated-2) 25%, var(--border-color) 50%, var(--bg-elevated-2) 75%);
+
+  background: linear-gradient(
+    90deg,
+    var(--bg-elevated-2) 25%,
+    var(--border-color) 50%,
+    var(--bg-elevated-2) 75%
+  );
+
   background-size: 200% 100%;
   animation: skeleton-pulse 1.4s ease-in-out infinite;
   margin-bottom: 10px;
 }
+
 @keyframes skeleton-pulse {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
+/* =========================
+   Responsive
+   ========================= */
+
 @media (min-width: 860px) {
-  .github-stats__grid { grid-template-columns: 1fr 1fr; }
-  .github-stats__grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .github-stats__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /*
+   * Contribution graph occupies the full row.
+   */
+  .github-stats__grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .github-stats__stat-row {
+    gap: 8px;
+  }
+
+  .github-stats__stat-value {
+    font-size: 1.5rem;
+  }
+
+  .github-calendar-image {
+    min-width: 650px;
+  }
 }
