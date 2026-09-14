@@ -1,120 +1,282 @@
 # Muzaffar Ali — Developer Portfolio
 
-A modern, responsive, dark/light-mode developer portfolio built with **React + Vite**, deployed as a **fully static site on GitHub Pages**. It includes a **Local Admin Editor** — a browser-only content editing tool for personal use, not a secure online CMS.
+A modern, responsive, dark/light-mode developer portfolio built with **React + Vite**, deployed as a **fully static site on GitHub Pages**.
+
+The portfolio includes a **Local Admin Editor** that allows personal content to be edited in the browser using `localStorage`. It is a browser-based editing convenience tool, **not a secure online CMS**.
+
+**Live Portfolio:** https://muzaffarcs.github.io/
+
+**GitHub Repository:** https://github.com/muzaffarCs/muzaffarCs.github.io
 
 ---
 
 ## Architecture
 
-```
+```text
 GitHub Repository
-      │
-      ▼
-GitHub Actions (npm install → npm run build)
-      │
-      ▼
-GitHub Pages  ──►  Static Portfolio  (reads src/data/defaultData.js)
-                          │
-                          ▼
-                  Local Admin Editor (/admin)
-                          │
-                          ▼
-                    localStorage
-              (this browser's edits only —
-               never affects other visitors)
+        │
+        ▼
+GitHub Actions
+   npm ci → npm run build
+        │
+        ▼
+     dist/
+        │
+        ▼
+GitHub Pages
+        │
+        ▼
+  Static Portfolio
+        │
+        └──────► /admin
+                    │
+                    ▼
+               localStorage
+            (browser-specific edits)
 ```
 
-There is **no backend, no database, and no server-side authentication** anywhere in this project. Everything is static files served by GitHub Pages.
+There is **no backend, database, or server-side authentication** in this project.
+
+Everything is compiled into static files and served through GitHub Pages.
+
+The published portfolio uses:
+
+```text
+src/data/defaultData.js
+```
+
+as its source of truth.
+
+The Local Admin Editor stores temporary editing changes in the browser's `localStorage`. Those changes do **not** automatically modify the GitHub repository or affect other visitors.
 
 ---
 
 ## Features
 
-- Dark/Light mode toggle, Framer Motion animations, glassmorphism UI, terminal-style Hero with a typing animation
-- Sticky navbar with scroll-spy + responsive hamburger menu, filterable project cards
-- Git-log style timelines (Experience, Education) and rich certification cards (issuer, credential ID, verification link, skill tags)
-- **GitHub Activity** section powered by live calls to the GitHub REST API (see "GitHub Activity Fix" below — this replaced a broken third-party image embed)
-- A working, downloadable resume at `public/resume.pdf`
-- **Local Admin Editor** (`/admin`) for editing all content from a browser UI
-- SEO meta tags, reduced-motion support, visible keyboard focus, semantic HTML
+* Responsive developer portfolio
+* Dark/Light mode
+* Framer Motion animations
+* Glassmorphism-inspired UI
+* Terminal-style Hero section
+* Typing animation
+* Sticky responsive navigation
+* Scroll-spy navigation
+* Mobile hamburger menu
+* Filterable project cards
+* Git-log style Experience and Education timelines
+* Certification cards with:
+
+  * Issuer
+  * Credential ID
+  * Verification link
+  * Skill tags
+* GitHub statistics section
+* GitHub public activity section
+* Working downloadable resume
+* Local Admin Editor at `/admin`
+* Editable portfolio content
+* SEO meta tags
+* Reduced-motion support
+* Keyboard focus states
+* Semantic HTML
+* GitHub Pages SPA fallback through `404.html`
+* Automated deployment using GitHub Actions
 
 ---
 
 ## Project Structure
 
-```
+```text
 portfolio/
-├── .github/workflows/deploy.yml   # official GitHub Pages Actions deployment
+│
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # GitHub Pages deployment workflow
+│
 ├── public/
 │   ├── favicon.svg
 │   ├── avatar-placeholder.svg
 │   └── resume.pdf
+│
 ├── src/
 │   ├── components/
-│   │   ├── admin/                 # Local Admin Editor (AdminPanel, ArrayEditor, ObjectEditor, schemas)
-│   │   ├── layout/                # Navbar, Footer, ScrollProgress, ScrollToTop, ThemeToggle
-│   │   ├── sections/               # Hero, About, Skills, Experience, Projects, GitHubStats, etc.
-│   │   └── ui/                     # Section, Card, Button, Badge, Timeline
+│   │   ├── admin/                  # Local Admin Editor
+│   │   │   ├── AdminPanel
+│   │   │   ├── ArrayEditor
+│   │   │   ├── ObjectEditor
+│   │   │   └── schemas
+│   │   │
+│   │   ├── layout/                # Navbar, Footer, ThemeToggle, etc.
+│   │   │
+│   │   ├── sections/              # Portfolio sections
+│   │   │   ├── Hero
+│   │   │   ├── About
+│   │   │   ├── Skills
+│   │   │   ├── Experience
+│   │   │   ├── Projects
+│   │   │   ├── GitHubStats
+│   │   │   └── ...
+│   │   │
+│   │   └── ui/                    # Reusable UI components
+│   │       ├── Section
+│   │       ├── Card
+│   │       ├── Button
+│   │       ├── Badge
+│   │       └── Timeline
+│   │
 │   ├── context/
 │   │   ├── ThemeContext.jsx
-│   │   └── DataContext.jsx        # runtime content store — backs the admin editor, hardened against corrupted localStorage
+│   │   └── DataContext.jsx         # Runtime content store
+│   │
 │   ├── data/
-│   │   └── defaultData.js         # SOURCE OF TRUTH for the published site
-│   ├── utils/withBase.js          # resolves public asset paths under the GitHub Pages subpath
+│   │   └── defaultData.js          # Published content source of truth
+│   │
+│   ├── utils/
+│   │   └── withBase.js              # Public asset path helper
+│   │
 │   ├── App.jsx
-│   └── main.jsx                    # routes "/" -> App, "/admin" -> AdminPanel
+│   └── main.jsx                     # "/" → App, "/admin" → AdminPanel
+│
 ├── index.html
 ├── package.json
-└── vite.config.js                  # GitHub Pages `base` path config
+└── vite.config.js                   # Vite configuration
 ```
 
 ---
 
 ## Local Development
 
+Clone the repository:
+
+```bash
+git clone https://github.com/muzaffarCs/muzaffarCs.github.io.git
+cd muzaffarCs.github.io
+```
+
+Install dependencies:
+
 ```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Visit `http://localhost:5173` for the site, `http://localhost:5173/admin` for the Local Admin Editor.
+The portfolio will normally be available at:
+
+```text
+http://localhost:5173/
+```
+
+The Local Admin Editor is available at:
+
+```text
+http://localhost:5173/admin
+```
+
+### Production Build
 
 ```bash
-npm run build      # outputs to dist/, also generates dist/404.html for GitHub Pages routing
-npm run preview    # preview the production build locally
+npm run build
+```
+
+The production files are generated in:
+
+```text
+dist/
+```
+
+The build also creates:
+
+```text
+dist/404.html
+```
+
+which allows the `/admin` path to work correctly on GitHub Pages.
+
+### Preview Production Build
+
+```bash
+npm run preview
 ```
 
 ---
 
 ## GitHub Pages Deployment
 
-### One-time setup
+The portfolio is deployed automatically using **GitHub Actions** and **GitHub Pages**.
 
-1. **Confirm the base path.** Open `vite.config.js` and check the `REPO_NAME` constant:
-   ```js
-   const REPO_NAME = 'MAD_Lab';
-   ```
-   This **must exactly match your GitHub repository name** (case-sensitive). This project has no `.git` remote configured yet, so this could not be verified automatically — it's set based on the repo name you mentioned. If your repo is actually named something else, update this line before deploying, or every asset (CSS, JS, resume, images) will 404 on the live site.
+### Repository
 
-   *(Exception: if your repository is literally named `muzaffarcs.github.io`, set `REPO_NAME = ''` instead — user/org pages are served from the domain root, not a subpath.)*
+```text
+https://github.com/muzaffarCs/muzaffarCs.github.io
+```
 
-2. **Push the code to GitHub:**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/muzaffarcs/MAD_Lab.git
-   git push -u origin main
-   ```
+Because this is a GitHub **user site repository**, the Vite configuration uses:
 
-3. **Enable GitHub Pages via Actions:**
-   - Go to your repo on GitHub → **Settings → Pages**
-   - Under "Build and deployment" → **Source**, select **"GitHub Actions"**
+```js
+base: '/'
+```
 
-That's it — the included workflow (`.github/workflows/deploy.yml`) handles the rest automatically.
+The site is therefore served from the domain root:
 
-### Ongoing deployment
+```text
+https://muzaffarcs.github.io/
+```
+
+It does **not** use a repository subpath such as:
+
+```text
+https://muzaffarcs.github.io/MAD_Lab/
+```
+
+### GitHub Pages Settings
+
+In the repository:
+
+```text
+Settings
+   → Pages
+   → Build and deployment
+   → Source
+   → GitHub Actions
+```
+
+The repository is already configured to use GitHub Actions for deployment.
+
+### Deployment Workflow
+
+The workflow is located at:
+
+```text
+.github/workflows/deploy.yml
+```
+
+When code is pushed to `main`, GitHub Actions:
+
+1. Checks out the repository
+2. Sets up Node.js
+3. Installs dependencies using `npm ci`
+4. Runs `npm run build`
+5. Uploads the generated `dist/` directory
+6. Deploys the artifact to GitHub Pages
+
+The deployment uses GitHub's official Pages Actions:
+
+```text
+actions/configure-pages
+actions/upload-pages-artifact
+actions/deploy-pages
+```
+
+No third-party deployment action is required.
+
+### Normal Deployment
+
+After making changes:
 
 ```bash
 git add .
@@ -122,144 +284,396 @@ git commit -m "Update portfolio"
 git push
 ```
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which runs `npm ci` → `npm run build` → uploads `dist/` → deploys to GitHub Pages, using GitHub's own official Pages Actions (`actions/upload-pages-artifact`, `actions/deploy-pages`) — no third-party deployment action involved. Watch progress under your repo's **Actions** tab.
+Pushing to `main` automatically triggers the deployment workflow.
 
-Your site will be live at:
-```
-https://muzaffarcs.github.io/MAD_Lab/
+Deployment progress can be monitored from:
+
+```text
+GitHub Repository
+→ Actions
+→ Deploy to GitHub Pages
 ```
 
 ---
 
-## Admin Editor — How It Works
+## Admin Editor
 
-> **The Local Admin Editor is a personal editing convenience tool, not a secure online administration system.** There is intentionally no login. Read the Security Model section before using it.
+The portfolio includes a browser-based Local Admin Editor at:
 
-1. Open `/admin` on your local dev server or your deployed site.
-2. Edit personal info, skills, experience, projects, education, certifications, achievements, currently-learning items, or languages.
-3. Click **Save Section** — changes save to this browser's `localStorage` and apply immediately.
-4. Click **View Public Site** to preview how your edits look on the actual portfolio pages, in this same browser.
-5. When you're happy with the changes, click **Export Data File** — this downloads an updated `defaultData.js`.
-6. Replace `src/data/defaultData.js` in your project with the downloaded file.
-7. Review the diff (`git diff`) to make sure it looks right.
-8. Commit and push:
-   ```bash
-   git add src/data/defaultData.js
-   git commit -m "Update portfolio content"
-   git push
-   ```
-9. GitHub Actions rebuilds and redeploys automatically — your changes are now public.
+```text
+/admin
+```
 
-Local edits made in `/admin` **never automatically become public**. `src/data/defaultData.js` in the repository is always the actual source of truth for what every visitor sees — a browser's `localStorage` only affects that one browser's own view.
+For example:
+
+```text
+https://muzaffarcs.github.io/admin
+```
+
+The editor is intended for personal use and allows portfolio content to be edited through a graphical interface.
+
+### How It Works
+
+1. Open `/admin`.
+2. Edit portfolio information.
+3. Click **Save Section**.
+4. Changes are stored in the browser's `localStorage`.
+5. Use **View Public Site** to preview the changes in the same browser.
+6. When satisfied, use **Export Data File**.
+7. Replace:
+
+```text
+src/data/defaultData.js
+```
+
+with the exported file.
+8. Review the changes.
+9. Commit and push the updated data file.
+
+For example:
+
+```bash
+git diff src/data/defaultData.js
+```
+
+Then:
+
+```bash
+git add src/data/defaultData.js
+git commit -m "Update portfolio content"
+git push
+```
+
+GitHub Actions will automatically rebuild and redeploy the portfolio.
+
+### Important
+
+Changes made directly inside `/admin` are **not automatically published**.
+
+The repository version of:
+
+```text
+src/data/defaultData.js
+```
+
+is the actual source of truth for the published portfolio.
 
 ---
 
 ## Security Model
 
-**Public website:**
-- Fully public, fully static
-- No backend, no database, no server-side authentication, no secrets
+### Public Website
 
-**Admin editor (`/admin`):**
-- A local convenience tool for editing content in your own browser
-- Uses `localStorage` — **not** encrypted, **not** private, **not** authenticated
-- Anyone who knows the URL can open `/admin`, but nothing they change there reaches the published site or any other visitor — it only affects their own browser's local view
-- This is **not** a secure CMS and is never described as one anywhere in this project
+The public website is:
 
-**Source of truth:**
-- The Git repository — specifically `src/data/defaultData.js`
+* Fully static
+* Publicly accessible
+* Hosted on GitHub Pages
+* Without a backend
+* Without a database
+* Without server-side authentication
+* Without server-side secrets
 
-**Publishing changes:**
-- Manually: export from `/admin` → replace `defaultData.js` → commit → push → GitHub Pages deploys
+### Admin Editor
 
-There used to be a password gate on `/admin` in an earlier version of this project. **It was removed on purpose.** A password baked into a static frontend bundle is visible to anyone who opens browser dev tools — it would have implied a security guarantee this architecture cannot actually provide. Removing it and being upfront about it is the safer, more honest choice.
+The Admin Editor is intentionally **not a secure CMS**.
+
+It:
+
+* Runs entirely in the browser
+* Uses `localStorage`
+* Has no server-side authentication
+* Does not protect data using encryption
+* Does not modify the GitHub repository automatically
+
+Anyone who knows the `/admin` URL can open the editor.
+
+However, changes made by another visitor only affect **that visitor's browser**. They do not change the published portfolio or another visitor's browser.
+
+### No Password Gate
+
+There is intentionally no password system protecting `/admin`.
+
+A password embedded in a static frontend application would not provide meaningful security because the password would ultimately be present in code delivered to the browser.
+
+The project therefore treats `/admin` honestly as a **local editing convenience tool**, rather than pretending it is a secure administration system.
 
 ---
 
 ## Using the Admin Editor Safely
 
-- Only use `/admin` on your own computer — treat it like any other browser tab with unsaved personal notes in it.
-- Don't use it on public or shared computers.
-- **Never type passwords, API keys, tokens, or other secrets into any portfolio field.** Everything you type here can end up in the exported file and, eventually, on the public website.
-- Don't treat `localStorage` as secure or encrypted storage — it isn't.
-- Don't put private information into portfolio content in general, since exported data is meant to become public.
-- Always review the exported `defaultData.js` before committing it.
-- Run `git diff` before every push so you know exactly what's changing.
-- Never commit a real `.env` file or any credential file (see `.gitignore`).
-- Keep your GitHub account itself secured with a strong password and 2FA — that account is the actual thing protecting your repository and deployment.
-- If you ever add collaborators, review changes to `.github/workflows/` before merging them, since workflow files can run arbitrary CI commands.
+The following rules should be followed when using `/admin`:
 
-**Important limitation:** if your GitHub repository is public, its entire contents — including all commit history — are public. Never put a real secret into this project's source code, even one intended "just for the admin panel." There is no way to make frontend code truly private.
+* Prefer using it on your own computer.
+* Do not use it on public or shared computers.
+* Never enter passwords, API keys, access tokens, or other secrets into portfolio fields.
+* Do not store private information in portfolio content.
+* Remember that `localStorage` is not encrypted or secure storage.
+* Review the exported `defaultData.js` before committing it.
+* Run `git diff` before pushing changes.
+* Never commit a real `.env` file or credential file.
+* Keep your GitHub account protected with a strong password and 2FA.
+* Review `.github/workflows/` carefully before accepting workflow changes from collaborators.
 
----
-
-## GitHub Activity Fix
-
-The GitHub Activity section previously embedded two images from `github-readme-stats.vercel.app` (a community-run, Vercel-hosted service) plus a third-party contribution-graph image. Both were showing as broken images.
-
-**Root cause:** these were plain `<img>` tags pointing at someone else's server. That specific project is extremely popular, runs on Vercel's serverless free tier, and is well documented to suffer intermittent outages, cold-start failures, and rendering errors under load — none of which our site can detect or retry, since a failed image request just renders as a broken-image icon with no fallback. Separately, a real GitHub *contribution calendar* isn't obtainable from a static site at all: it's only exposed via the authenticated GraphQL API, and no token can be safely embedded in a public frontend bundle (see the Security Model above).
-
-**Fix:** the section now calls **GitHub's own official REST API** directly from the browser (`api.github.com/users/{username}`, `.../repos`, `.../events/public`) — no API key required for public data — and renders the results using the site's own design system instead of an external image. This means:
-- No dependency on a third party's rendering uptime
-- Real, live stats (public repo count, followers/following, aggregated top languages, recent public activity) computed from GitHub's actual data
-- Graceful degradation: if the API is briefly rate-limited or unreachable, the section shows a clear message and a direct link to the GitHub profile instead of a broken image
-- Results are cached in `sessionStorage` for 15 minutes to stay comfortably under GitHub's 60-requests/hour unauthenticated rate limit
+If the GitHub repository is public, its files and commit history are publicly accessible. Never place real secrets in the repository.
 
 ---
 
-## GitHub Pages Routing (`/admin`)
+## GitHub Integration
 
-GitHub Pages is static hosting with no server-side rewrites, so a direct visit to `/admin` (or a refresh while on it) would normally 404. This project handles that with the standard static-hosting fallback pattern:
+The GitHub section uses the **GitHub REST API** to display public GitHub information.
 
-- `npm run build` automatically copies `dist/index.html` to `dist/404.html` (see the `postbuild` script in `package.json`)
-- GitHub Pages serves that same app for any unrecognized path
-- `src/main.jsx` reads the actual browser URL and renders the Admin Editor when the path ends in `/admin`, or the portfolio otherwise
+The portfolio retrieves public information such as:
 
-No routing library is needed for two routes, and no server configuration is required beyond what's already in this repo.
+* Public repository count
+* Followers
+* Following
+* Top programming languages used across repositories
+* Recent public GitHub activity
+
+The GitHub API is accessed directly from the browser for public data and does not require a personal GitHub access token.
+
+The portfolio does not store or expose a GitHub API token.
+
+### Graceful Failure
+
+If GitHub's API is temporarily unavailable, unreachable, or rate-limited, the GitHub section is designed to fail gracefully rather than displaying a broken external image.
+
+Visitors can still use the direct GitHub profile link:
+
+```text
+https://github.com/muzaffarCs
+```
+
+### API Rate Limits
+
+Unauthenticated GitHub REST API requests are subject to GitHub's rate limits.
+
+The portfolio only requests public information needed for the GitHub section and does not require authenticated API access.
 
 ---
 
-## Editing Content Directly (without the admin editor)
+## GitHub Pages Routing
 
-Everything in `src/data/defaultData.js` maps 1:1 to a section on the site — editing that file directly works too.
+GitHub Pages provides static hosting and does not perform server-side SPA rewrites.
 
-- **Profile picture:** replace `public/avatar-placeholder.svg`, then update `personal.avatarUrl`.
-- **Resume:** replace `public/resume.pdf` with a newer export — the Hero/Navbar buttons already point to it via `withBase()` so it resolves correctly under the GitHub Pages subpath.
-- **Contact form:** it currently opens the visitor's email client via `mailto:` since a static site can't send email directly. To make it submit without an email client, wire it up to a free tier of Formspree or EmailJS in `src/components/sections/Contact.jsx`.
+The project therefore uses a simple static fallback.
+
+During the production build:
+
+```text
+dist/index.html
+```
+
+is copied to:
+
+```text
+dist/404.html
+```
+
+GitHub Pages can then serve the application for an unrecognized path.
+
+The application checks the browser URL in:
+
+```text
+src/main.jsx
+```
+
+and renders:
+
+```text
+/       → Portfolio
+/admin  → Local Admin Editor
+```
+
+This allows `/admin` to work without adding a routing library.
 
 ---
 
-## Robustness Notes
+## Editing Content Directly
 
-- **Corrupted localStorage:** if the saved admin data is ever unreadable (manual tampering, browser bug, etc.), it's detected, discarded, and the site falls back to `defaultData.js` automatically — the public portfolio never crashes because of bad local state. A one-time notice appears in `/admin` if this happens.
-- **localStorage unavailable** (private browsing, disabled storage, storage quota exceeded): the site and the editor both keep working using in-memory state for that session; edits just won't persist across a refresh.
-- **Delete/Reset actions** in `/admin` always ask for confirmation first.
+Portfolio content can also be edited directly without using the Admin Editor.
+
+The main content source is:
+
+```text
+src/data/defaultData.js
+```
+
+### Profile Picture
+
+Replace:
+
+```text
+public/avatar-placeholder.svg
+```
+
+and update the corresponding avatar value in:
+
+```text
+src/data/defaultData.js
+```
+
+### Resume
+
+Replace:
+
+```text
+public/resume.pdf
+```
+
+with the updated resume.
+
+The portfolio already handles the public asset path through `withBase()`.
+
+### Contact Form
+
+The contact section currently uses `mailto:`.
+
+This means clicking the contact action opens the visitor's configured email client.
+
+A backend or external form service would be required if the portfolio needs to submit messages directly without opening an email client.
+
+---
+
+## Robustness
+
+### Corrupted localStorage
+
+If saved admin data becomes unreadable, the application detects the problem and falls back to:
+
+```text
+src/data/defaultData.js
+```
+
+This prevents corrupted browser data from breaking the portfolio.
+
+### localStorage Unavailable
+
+If browser storage is unavailable because of:
+
+* Private browsing restrictions
+* Disabled storage
+* Storage quota limitations
+* Browser-specific restrictions
+
+the application can continue using in-memory state for the current session.
+
+Changes may not survive a page refresh in that situation.
+
+### Admin Delete/Reset Actions
+
+Destructive actions in the Admin Editor require confirmation before proceeding.
 
 ---
 
 ## Tech Stack
 
-| Layer | Tools |
-|---|---|
-| Framework | React 18 + Vite 5 |
-| Animation | Framer Motion |
-| Icons | react-icons (Feather set) |
-| SEO | react-helmet-async |
-| Content storage | React Context + `localStorage` (admin editor), static JS module (published defaults) |
-| GitHub data | GitHub REST API, called directly client-side |
-| Deployment | GitHub Actions + GitHub Pages (official `actions/deploy-pages`) |
+| Layer              | Technology                    |
+| ------------------ | ----------------------------- |
+| Framework          | React 18                      |
+| Build Tool         | Vite 5                        |
+| Animation          | Framer Motion                 |
+| Icons              | react-icons                   |
+| SEO                | react-helmet-async            |
+| Content Management | React Context + localStorage  |
+| Published Content  | Static JavaScript data        |
+| GitHub Integration | GitHub REST API               |
+| Hosting            | GitHub Pages                  |
+| CI/CD              | GitHub Actions                |
+| Deployment         | Official GitHub Pages Actions |
+| Styling            | CSS                           |
 
 ---
 
 ## Known Limitations
 
-- The GitHub Activity section is subject to GitHub's unauthenticated REST API rate limit (60 requests/hour per visitor IP address). This is very unlikely to matter for normal portfolio traffic, and the section degrades gracefully (a link to the profile) if it's ever hit.
-- There is no true GitHub contribution-calendar heatmap, because that data requires GitHub's authenticated GraphQL API, which cannot be safely accessed from a public static site without exposing a token. "Recent Public Activity" is shown instead.
-- The admin editor provides no real access control by design — see the Security Model section. It is meant to be used only by you, on your own machine.
-- The base path in `vite.config.js` was set from the repository name you mentioned, not verified against an actual `git remote` (none existed in this project yet). Confirm it matches your real repository name before deploying.
+### Static Architecture
+
+The portfolio does not have:
+
+* A backend
+* A database
+* Server-side authentication
+* Server-side sessions
+* A traditional CMS
+
+The project is intentionally designed as a static portfolio.
+
+### Local Admin Editor
+
+The `/admin` page is not a secure CMS.
+
+Anyone who knows the URL can open it, and browser `localStorage` should never be considered secure storage.
+
+### GitHub API
+
+The GitHub section depends on GitHub's public REST API.
+
+If GitHub's API is unavailable or rate-limited, live GitHub information may temporarily fail to load.
+
+### Contact Form
+
+The contact functionality currently relies on the visitor's email client through `mailto:` rather than a server-side form-processing service.
+
+### Public Repository
+
+Because the repository is public, its source code and commit history are publicly accessible.
+
+No passwords, API keys, tokens, or other secrets should ever be committed to the repository.
+
+---
+
+## Development Workflow
+
+A typical workflow for making portfolio changes is:
+
+```bash
+# 1. Make changes
+
+# 2. Check the project locally
+npm run dev
+
+# 3. Build the production version
+npm run build
+
+# 4. Preview the production build if needed
+npm run preview
+
+# 5. Check changed files
+git status
+
+# 6. Review the actual changes
+git diff
+
+# 7. Commit
+git add .
+git commit -m "Update portfolio"
+
+# 8. Push
+git push
+```
+
+GitHub Actions then automatically deploys the new version to GitHub Pages.
+
+---
+
+## Live Links
+
+**Portfolio**
+
+https://muzaffarcs.github.io/
+
+**GitHub**
+
+https://github.com/muzaffarCs
+
+**Repository**
+
+https://github.com/muzaffarCs/muzaffarCs.github.io
 
 ---
 
 ## License
 
-Free to use and modify as your personal portfolio.
+Free to use and modify as a personal portfolio project.
