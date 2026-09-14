@@ -1,0 +1,5 @@
+.skills__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.skills__card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.skills__icon { width: 40px; height: 40px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: var(--bg-elevated-2); color: var(--accent-amber); flex-shrink: 0; }
+.skills__category-title { font-family: var(--font-display); font-size: 0.95rem; color: var(--text-primary); }
+.skills__tags { display: flex; flex-wrap: wrap; gap: 8px; }

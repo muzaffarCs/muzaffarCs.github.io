@@ -1,0 +1,21 @@
+node_modules/
+dist/
+dist-ssr/
+
+# Env files — this project doesn't currently need any environment variables
+# (the GitHub Pages base path is a plain, non-secret constant in vite.config.js),
+# but these are ignored preventively in case that ever changes. Never commit
+# a real .env file; .env.example (if one is ever added) is intentionally kept.
+.env
+.env.*
+!.env.example
+
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log

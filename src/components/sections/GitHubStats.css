@@ -1,0 +1,119 @@
+.github-stats__grid {
+  display: grid;
+  gap: 20px;
+}
+
+.github-stats__stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.github-stats__stat {
+  text-align: center;
+}
+
+.github-stats__stat-value {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--accent-amber);
+  margin-bottom: 4px;
+}
+
+.github-stats__stat-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.github-stats__lang-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: var(--bg-elevated-2);
+}
+
+.github-stats__lang-segment {
+  height: 100%;
+}
+
+.github-stats__lang-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.github-stats__lang-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.github-stats__lang-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.github-stats__activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.github-stats__activity-item {
+  display: flex;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.github-stats__activity-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.github-stats__activity-time {
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.github-stats__note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 14px;
+}
+
+.github-stats__state {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.github-stats__skeleton {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--bg-elevated-2) 25%, var(--border-color) 50%, var(--bg-elevated-2) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+@keyframes skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (min-width: 860px) {
+  .github-stats__grid { grid-template-columns: 1fr 1fr; }
+  .github-stats__grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}

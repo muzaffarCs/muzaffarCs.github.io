@@ -1,0 +1,4 @@
+.learning__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.learning__card-title { display: flex; align-items: center; gap: 10px; font-size: 1rem; color: var(--text-primary); margin-bottom: 8px; }
+.learning__pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green); animation: pulse-glow 2s ease-in-out infinite; flex-shrink: 0; }
+.learning__note { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }

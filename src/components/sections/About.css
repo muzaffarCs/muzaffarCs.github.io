@@ -1,0 +1,6 @@
+.about__grid { display: grid; gap: 40px; }
+.about__text p { margin-bottom: 18px; font-size: 1.02rem; line-height: 1.75; }
+.about__facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-content: start; }
+.about__fact-label { font-family: var(--font-display); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 6px; }
+.about__fact-value { font-size: 0.95rem; color: var(--text-primary); font-weight: 600; }
+@media (min-width: 900px) { .about__grid { grid-template-columns: 1.3fr 0.7fr; } }

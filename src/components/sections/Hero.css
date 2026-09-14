@@ -1,0 +1,21 @@
+.hero { min-height: 100vh; display: flex; align-items: center; padding-top: var(--nav-height); }
+.hero__grid { display: grid; gap: 48px; align-items: center; }
+.hero__eyebrow { font-family: var(--font-display); font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+.hero__eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green); box-shadow: 0 0 0 3px rgba(107, 191, 142, 0.2); }
+.hero__name { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.05; color: var(--text-primary); margin-bottom: 14px; }
+.hero__title { font-family: var(--font-body); font-size: clamp(1.05rem, 2.2vw, 1.35rem); font-weight: 600; color: var(--accent-amber); margin-bottom: 20px; }
+.hero__tagline { max-width: 560px; font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 32px; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero__terminal { background: var(--bg-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 30px 60px -30px var(--shadow-color); }
+.hero__terminal-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: var(--bg-elevated-2); border-bottom: 1px solid var(--border-color); }
+.hero__terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
+.hero__terminal-dot--red { background: #f16c6c; }
+.hero__terminal-dot--yellow { background: #f2c85b; }
+.hero__terminal-dot--green { background: #6bbf8e; }
+.hero__terminal-title { margin-left: 8px; font-family: var(--font-display); font-size: 0.78rem; color: var(--text-muted); }
+.hero__terminal-body { padding: 24px; font-family: var(--font-display); font-size: 0.92rem; min-height: 220px; }
+.hero__terminal-line { display: flex; gap: 8px; margin-bottom: 14px; color: var(--text-secondary); }
+.hero__terminal-prompt { color: var(--accent-green); flex-shrink: 0; }
+.hero__terminal-output { color: var(--text-muted); padding-left: 18px; margin-bottom: 14px; line-height: 1.6; }
+.hero__terminal-typing { color: var(--accent-amber); }
+@media (min-width: 900px) { .hero__grid { grid-template-columns: 1.1fr 0.9fr; } }

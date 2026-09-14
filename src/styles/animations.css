@@ -1,0 +1,47 @@
+@keyframes blink-caret { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes float-slow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }
+@keyframes pulse-glow { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@keyframes grid-drift { from { background-position: 0 0; } to { background-position: 60px 60px; } }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.ambient-bg__grid {
+  position: absolute;
+  inset: -10%;
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-drift 18s linear infinite;
+  opacity: 0.5;
+}
+
+.ambient-bg__glow {
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.22;
+  animation: float-slow 14s ease-in-out infinite;
+}
+.ambient-bg__glow--amber { top: -120px; left: -80px; background: var(--accent-amber); }
+.ambient-bg__glow--cyan { bottom: -160px; right: -100px; background: var(--accent-cyan); animation-delay: -6s; }
+
+.loader-caret {
+  display: inline-block;
+  width: 10px;
+  height: 1.1em;
+  background: var(--accent-amber);
+  margin-left: 4px;
+  animation: blink-caret 0.9s step-end infinite;
+  vertical-align: text-bottom;
+}

@@ -1,0 +1,178 @@
+.admin-page {
+  min-height: 100vh;
+  padding: 32px 0 80px;
+}
+
+.admin-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 0;
+  margin-bottom: 32px;
+}
+
+.admin-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-topbar__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+.admin-topbar__title span { color: var(--accent-amber); }
+
+.admin-topbar__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent-amber);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.admin-notice svg {
+  color: var(--accent-amber);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.admin-notice code {
+  background: var(--bg-elevated-2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+.admin-notice--warning {
+  border-left-color: var(--accent-red);
+}
+.admin-notice--warning svg { color: var(--accent-red); }
+.admin-notice--info {
+  border-left-color: var(--accent-cyan);
+}
+.admin-notice--info svg { color: var(--accent-cyan); }
+
+.admin-export-error {
+  color: var(--accent-red);
+  font-size: 0.82rem;
+  margin-top: 8px;
+}
+
+/* ---- Tabs ---- */
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.admin-tab {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+.admin-tab:hover { border-color: var(--accent-amber); color: var(--accent-amber); }
+.admin-tab.is-active { background: var(--accent-amber); border-color: var(--accent-amber); color: #0b0f14; }
+
+/* ---- Editors ---- */
+.admin-array-editor__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.admin-array-editor__header h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+.admin-array-editor__header-actions { display: flex; gap: 8px; }
+
+.admin-empty-note { color: var(--text-muted); font-size: 0.9rem; }
+
+.admin-array-editor__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-item-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.admin-item-card__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+.admin-item-card__toggle:hover { color: var(--accent-amber); }
+
+.admin-item-card__body {
+  padding: 4px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid var(--border-color);
+}
+.admin-item-card__body--static {
+  border-top: none;
+  padding-top: 4px;
+}
+
+.admin-field label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.admin-field input, .admin-field textarea {
+  width: 100%;
+  background: var(--bg-elevated-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  resize: vertical;
+}
+.admin-field input:focus, .admin-field textarea:focus { border-color: var(--accent-amber); outline: none; }
+
+.admin-danger-zone {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px dashed var(--border-color-strong);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
